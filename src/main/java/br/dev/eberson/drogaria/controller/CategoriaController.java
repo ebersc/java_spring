@@ -28,6 +28,11 @@ public class CategoriaController {
 		return categorias;
 	}
 	
+	@GetMapping("/{codigo}")
+	public Categoria buscar(@PathVariable Byte codigo) {
+		return categoriaRepository.findById(codigo).get();
+	}
+	
 	@PostMapping
 	public Categoria inserir(@RequestBody Categoria categoria) {
 		return categoriaRepository.save(categoria);
