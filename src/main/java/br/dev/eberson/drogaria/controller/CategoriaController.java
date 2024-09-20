@@ -26,11 +26,11 @@ public class CategoriaController {
 	@Autowired
 	private CategoriaService categoriaService;
 	
-//	@GetMapping
-//	public List<Categoria> listar(){
-//		List<Categoria> categorias = categoriaRepository.findAll();
-//		return categorias;
-//	}
+	@GetMapping
+	public List<Categoria> listar(){
+		List<Categoria> categorias = categoriaService.buscarTodos();
+		return categorias;
+	}
 	
 	@GetMapping("/{codigo}")
 	public Categoria buscarPorCodigo(@PathVariable Byte codigo) {
@@ -41,20 +41,18 @@ public class CategoriaController {
 		}
 	}
 	
-//	@PostMapping
-//	public Categoria inserir(@RequestBody Categoria categoria) {
-//		return categoriaRepository.save(categoria);
-//	}
+	@PostMapping
+	public Categoria inserir(@RequestBody Categoria categoria) {
+		return categoriaService.inserir(categoria);
+	}
 	
-//	@DeleteMapping("/{codigo}")
-//	public Categoria excluir(@PathVariable Byte codigo) {
-//		Optional<Categoria> categoria = categoriaRepository.findById(codigo);
-//		categoriaRepository.delete(categoria.get());
-//		return categoria.get();
-//	}
+	@DeleteMapping("/{codigo}")
+	public Categoria excluir(@PathVariable Byte codigo) {
+		return categoriaService.excluir(codigo);
+	}
 	
-//	@PutMapping
-//	public Categoria editar(@RequestBody Categoria categoria) {
-//		return categoriaRepository.save(categoria);
-//	}
+	@PutMapping
+	public Categoria editar(@RequestBody Categoria categoria) {
+		return categoriaService.editar(categoria);
+	}
 }
